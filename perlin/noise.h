@@ -5,12 +5,14 @@
 #include <stdio.h>
 #include <math.h>
 
-#define B 0x100
-#define BM 0xff
+#define B 0x100  /* 256 */
+#define BM 0xff  /* 255 */
 
-#define N 0x1000
+#define N 0x1000 /* 4096 */
 #define NP 12   /* 2^N */
-#define NM 0xfff
+#define NM 0xfff /* 4095 */
+
+#define B 4
 
 static p[B + B + 2];
 static float g3[B + B + 2][3];
@@ -193,4 +195,26 @@ static void init(void)
 		for (j = 0 ; j < 3 ; j++)
 			g3[B + i][j] = g3[i][j];
 	}
+
+        for (i = 0; i < B+B+2; i++) {
+            printf("%d\n", p[i]);
+        }
+
+        for (i = 0; i < B+B+2; i++) {
+            printf("%f\n", g1[i]);
+        }
+
+        for (i = 0; i < B+B+2; i++) {
+            for (j = 0; j < 2; j++) {
+              printf("%f, ", g2[i][j]);
+            }
+            printf("\n");
+        }
+
+        for (i = 0; i < B+B+2; i++) {
+            for (j = 0; j < 3; j++) {
+              printf("%f, ", g3[i][j]);
+            }
+            printf("\n");
+        }
 }
