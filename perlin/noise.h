@@ -12,8 +12,6 @@
 #define NP 12   /* 2^N */
 #define NM 0xfff /* 4095 */
 
-#define B 4
-
 static p[B + B + 2];
 static float g3[B + B + 2][3];
 static float g2[B + B + 2][2];
@@ -128,6 +126,7 @@ float noise3(float vec[3])
 	q = g3[ b01 + bz0 ] ; u = at3(rx0,ry1,rz0);
 	q = g3[ b11 + bz0 ] ; v = at3(rx1,ry1,rz0);
 	b = lerp(t, u, v);
+        printf("%f, %f\n", a, b);
 
 	c = lerp(sy, a, b);
 
@@ -138,9 +137,12 @@ float noise3(float vec[3])
 	q = g3[ b01 + bz1 ] ; u = at3(rx0,ry1,rz1);
 	q = g3[ b11 + bz1 ] ; v = at3(rx1,ry1,rz1);
 	b = lerp(t, u, v);
+        printf("%f, %f\n", a, b);
 
 	d = lerp(sy, a, b);
 
+        printf("%f, %f\n", c, d);
+        printf("%f\n", lerp(sz, c, d));
 	return lerp(sz, c, d);
 }
 
@@ -196,25 +198,4 @@ static void init(void)
 			g3[B + i][j] = g3[i][j];
 	}
 
-        for (i = 0; i < B+B+2; i++) {
-            printf("%d\n", p[i]);
-        }
-
-        for (i = 0; i < B+B+2; i++) {
-            printf("%f\n", g1[i]);
-        }
-
-        for (i = 0; i < B+B+2; i++) {
-            for (j = 0; j < 2; j++) {
-              printf("%f, ", g2[i][j]);
-            }
-            printf("\n");
-        }
-
-        for (i = 0; i < B+B+2; i++) {
-            for (j = 0; j < 3; j++) {
-              printf("%f, ", g3[i][j]);
-            }
-            printf("\n");
-        }
 }
