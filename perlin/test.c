@@ -18,9 +18,15 @@ int main()
   // test_setup();
   // noise1(1.32);
 
-  float vec[2];
+  // float vec[2];
+  // vec[0] = 1.32;
+  // vec[1] = 2.61;
+  // noise2(vec);
+
+  float vec[3];
   vec[0] = 1.32;
   vec[1] = 2.61;
-  noise2(vec);
+  vec[2] = 3.5;
+  noise3(vec);
   return 0;
 }
